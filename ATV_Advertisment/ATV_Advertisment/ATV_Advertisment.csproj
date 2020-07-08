@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D96C070-447E-4F80-A2DD-DC98F0E0A992}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ATV_Advertisment</RootNamespace>
+    <AssemblyName>ATV_Advertisment</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\TIENTP\Desktop\New folder\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\FormResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Logging.cs" />
+    <Compile Include="Common\MoneyToText.cs" />
+    <Compile Include="Common\PropertyComparer.cs" />
+    <Compile Include="Common\Session.cs" />
+    <Compile Include="Common\SortableBindingList.cs" />
+    <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Forms\AdminForms\CreateAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\CreateAccountForm.Designer.cs">
+      <DependentUpon>CreateAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\LoggingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\LoggingForm.Designer.cs">
+      <DependentUpon>LoggingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CommonForms\CommonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CommonForms\CommonForm.Designer.cs">
+      <DependentUpon>CommonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CommonForms\GlobalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CommonForms\GlobalForm.Designer.cs">
+      <DependentUpon>GlobalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CommonForms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CommonForms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CommonForms\ReportViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CommonForms\ReportViewerForm.Designer.cs">
+      <DependentUpon>ReportViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractItemDetailForm.Designer.cs">
+      <DependentUpon>ContractItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ContractDetailForm.Designer.cs">
+      <DependentUpon>ContractDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\CustomerDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\CustomerDetailForm.Designer.cs">
+      <DependentUpon>CustomerDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\DurationDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\DurationDetailForm.Designer.cs">
+      <DependentUpon>DurationDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ProductScheduleDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ProductScheduleDetailForm.Designer.cs">
+      <DependentUpon>ProductScheduleDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\SessionDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\SessionDetailForm.Designer.cs">
+      <DependentUpon>SessionDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ShowTypeDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\ShowTypeDetailForm.Designer.cs">
+      <DependentUpon>ShowTypeDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DetailForms\TimeSlotDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DetailForms\TimeSlotDetailForm.Designer.cs">
+      <DependentUpon>TimeSlotDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InputForms\ListContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputForms\ListContractForm.Designer.cs">
+      <DependentUpon>ListContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InputForms\SortScheduleByDayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputForms\SortScheduleByDayForm.Designer.cs">
+      <DependentUpon>SortScheduleByDayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListCustomerForm.Designer.cs">
+      <DependentUpon>ListCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListDurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListDurationForm.Designer.cs">
+      <DependentUpon>ListDurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListSessionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListSessionForm.Designer.cs">
+      <DependentUpon>ListSessionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListShowTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListShowTypeForm.Designer.cs">
+      <DependentUpon>ListShowTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListTimeSlotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListForms\ListTimeSlotForm.Designer.cs">
+      <DependentUpon>ListTimeSlotForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\ExpectedPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\ExpectedPrintForm.Designer.cs">
+      <DependentUpon>ExpectedPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\InputSchedulePrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\InputSchedulePrintForm.Designer.cs">
+      <DependentUpon>InputSchedulePrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\LiabilitesPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\LiabilitesPrintForm.Designer.cs">
+      <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\PricingPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\PricingPrintForm.Designer.cs">
+      <DependentUpon>PricingPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\RevenuePrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\RevenuePrintForm.Designer.cs">
+      <DependentUpon>RevenuePrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\SchedulePrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\SchedulePrintForm.Designer.cs">
+      <DependentUpon>SchedulePrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintForms\ShowCommitmentPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintForms\ShowCommitmentPrintForm.Designer.cs">
+      <DependentUpon>ShowCommitmentPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingForms\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingForms\ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingForms\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingForms\HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProductScheduleShowRpt.cs" />
+    <Compile Include="Reports\RevenueReport.cs" />
+    <Compile Include="Services\DiscountApplyService.cs" />
+    <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\ShowTypeService.cs" />
+    <Compile Include="Services\ProductScheduleShowService.cs" />
+    <Compile Include="Services\SystemConfigService.cs" />
+    <Compile Include="Services\CostRuleService.cs" />
+    <Compile Include="Services\TimeSlotService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\ContractItemService.cs" />
+    <Compile Include="Services\ContractService.cs" />
+    <Compile Include="Services\BusinessLogService.cs" />
+    <Compile Include="Services\DurationService.cs" />
+    <Compile Include="Services\SessionService.cs" />
+    <Compile Include="Services\SystemLogService.cs" />
+    <Compile Include="Services\RoleHasMenuItemService.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\MenuItemService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ViewModel\ContractDetailUpdateVM.cs" />
+    <Compile Include="ViewModel\ContractDetailViewModel.cs" />
+    <Compile Include="ViewModel\ContractViewModel.cs" />
+    <Compile Include="ViewModel\CostRuleViewModel.cs" />
+    <Compile Include="ViewModel\DaysInWeek.cs" />
+    <Compile Include="ViewModel\DiscountRM.cs" />
+    <Compile Include="ViewModel\DiscountViewModel.cs" />
+    <Compile Include="ViewModel\ExpectedHalfdayRM.cs" />
+    <Compile Include="ViewModel\ExpectedRM.cs" />
+    <Compile Include="ViewModel\InputScheduleMRM.cs" />
+    <Compile Include="ViewModel\InputScheduleRM.cs" />
+    <Compile Include="ViewModel\LiabilitiesRM.cs" />
+    <Compile Include="ViewModel\PricingFMNotificationRM.cs" />
+    <Compile Include="ViewModel\PricingFMProductRM.cs" />
+    <Compile Include="ViewModel\PricingNotificationRM.cs" />
+    <Compile Include="ViewModel\PricingPopupRM.cs" />
+    <Compile Include="ViewModel\PricingRM.cs" />
+    <Compile Include="ViewModel\PricingSelfIntroRM.cs" />
+    <Compile Include="ViewModel\ProductScheduleShowRM.cs" />
+    <Compile Include="ViewModel\ProductScheduleShowViewModel.cs" />
+    <Compile Include="ViewModel\ProductScheduleViewModel.cs" />
+    <Compile Include="ViewModel\RevenueRM.cs" />
+    <Compile Include="ViewModel\SCommitmentMRM.cs" />
+    <Compile Include="ViewModel\ShowCommitmentRM.cs" />
+    <Compile Include="ViewModel\SortProductScheduleViewModel.cs" />
+    <Compile Include="ViewModel\TimeSlotViewModel.cs" />
+    <EmbeddedResource Include="Assets\FormResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\CreateAccountForm.resx">
+      <DependentUpon>CreateAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\LoggingForm.resx">
+      <DependentUpon>LoggingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CommonForms\CommonForm.resx">
+      <DependentUpon>CommonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CommonForms\GlobalForm.resx">
+      <DependentUpon>GlobalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CommonForms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CommonForms\ReportViewerForm.resx">
+      <DependentUpon>ReportViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ContractItemDetailForm.resx">
+      <DependentUpon>ContractItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ContractDetailForm.resx">
+      <DependentUpon>ContractDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\CustomerDetailForm.resx">
+      <DependentUpon>CustomerDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\DurationDetailForm.resx">
+      <DependentUpon>DurationDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ProductScheduleDetailForm.resx">
+      <DependentUpon>ProductScheduleDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\SessionDetailForm.resx">
+      <DependentUpon>SessionDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\ShowTypeDetailForm.resx">
+      <DependentUpon>ShowTypeDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DetailForms\TimeSlotDetailForm.resx">
+      <DependentUpon>TimeSlotDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputForms\ListContractForm.resx">
+      <DependentUpon>ListContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputForms\SortScheduleByDayForm.resx">
+      <DependentUpon>SortScheduleByDayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListCustomerForm.resx">
+      <DependentUpon>ListCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListDurationForm.resx">
+      <DependentUpon>ListDurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListSessionForm.resx">
+      <DependentUpon>ListSessionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListShowTypeForm.resx">
+      <DependentUpon>ListShowTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListForms\ListTimeSlotForm.resx">
+      <DependentUpon>ListTimeSlotForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\ExpectedPrintForm.resx">
+      <DependentUpon>ExpectedPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\InputSchedulePrintForm.resx">
+      <DependentUpon>InputSchedulePrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\LiabilitesPrintForm.resx">
+      <DependentUpon>LiabilitesPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\PricingPrintForm.resx">
+      <DependentUpon>PricingPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\RevenuePrintForm.resx">
+      <DependentUpon>RevenuePrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\SchedulePrintForm.resx">
+      <DependentUpon>SchedulePrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintForms\ShowCommitmentPrintForm.resx">
+      <DependentUpon>ShowCommitmentPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingForms\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingForms\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ExpectedHalfdayReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ExpectedReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InputScheduleReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\LiabilitiesReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PricingReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProductSchedule.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RevenueRpt.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ShowCommitmentReport.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DaysInWeek.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.DiscountRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ExpectedHalfdayRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ExpectedRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.InputScheduleRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.LiabilitiesRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingFMNotificationRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingFMProductRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingNotificationRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingPopupRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.PricingSelfIntroRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ProductScheduleShowRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.RevenueRM.datasource" />
+    <None Include="Properties\DataSources\ATV_Advertisment.ViewModel.ShowCommitmentRM.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataService\DataService.csproj">
+      <Project>{F4B75E27-3BFF-4F6F-851C-2C9994B7C0CF}</Project>
+      <Name>DataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportService\ReportService.csproj">
+      <Project>{8F9D6C57-2D4E-46F6-A188-2FE67CD19DBF}</Project>
+      <Name>ReportService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TControls\TControls.csproj">
+      <Project>{f6b6b2b6-5061-4389-b74d-01c5109067e7}</Project>
+      <Name>TControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppIcon.ico" />
+    <Content Include="Assets\background1.jpg" />
+    <Content Include="Assets\background2.png" />
+    <Content Include="Assets\LogoATV.png" />
+    <Content Include="Assets\LogoATVSM.ico" />
+    <Content Include="Assets\LogoATVSM.jpg" />
+    <Content Include="Assets\AppIcon.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
