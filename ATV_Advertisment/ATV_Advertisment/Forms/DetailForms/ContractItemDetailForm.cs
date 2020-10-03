@@ -64,10 +64,10 @@ namespace ATV_Advertisment.Forms.DetailForms
                         {
                             IsExisted = true;
 
-                            txtProductName.Text = model.ProductName;
+                            txtProductName.Text = model.ProductName.Trim();
                             txtTotalCost.Text = Utilities.DoubleMoneyToText(model.TotalCost);
                             txtNumberOfShow.Text = model.NumberOfShow.ToString();
-                            txtFileName.Text = model.FileName.ToString();
+                            txtFileName.Text = model.FileName.Trim().ToString();
                             cboDuration.SelectedValue = model.DurationSecond;
                             cboShowType.SelectedValue = model.ShowTypeId;
 
@@ -243,58 +243,74 @@ namespace ATV_Advertisment.Forms.DetailForms
                 {
                     if (model.Id == 0)
                     {
-                        //Add
-                        model.ProductName = txtProductName.Text;
-                        model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
-                        model.DurationSecond = (int)cboDuration.SelectedValue;
-                        model.FileName = txtFileName.Text;
-                        model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
-                        model.ShowTypeId = (int)cboShowType.SelectedValue;
-
-                        result = _contractDetailService.CreateContractDetail(model);
-                        if (result != null)
+                        if(_contractDetailService.AbleToAddWithFileName(txtFileName.Text.Trim())) //Not has ACTIVE used before => Able to add
                         {
-                            if (result.Id == 0)
+                            //---------Add---------
+                            model.ProductName = txtProductName.Text.Trim();
+                            model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
+                            model.DurationSecond = (int)cboDuration.SelectedValue;
+                            model.FileName = txtFileName.Text.Trim();
+                            model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
+                            model.ShowTypeId = (int)cboShowType.SelectedValue;
+
+                            result = _contractDetailService.CreateContractDetail(model);
+                            if (result != null)
                             {
-                                Utilities.ShowMessage(CommonMessage.EXISTED_PRODUCT_IN_CONTRACT);
-                            } else
-                            {
-                                model = result;
-                                gbRegisterSchedule.Visible = true;
-                                productScheduleShow = new ProductScheduleShow()
+                                if (result.Id == 0)
                                 {
-                                    ContractDetailId = model.Id,
-                                    TimeSlotLength = (int)cboDuration.SelectedValue,
-                                    ProductName = txtFileName.Text
-                                };
-                                Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
-                                Logging.LogBusiness(string.Format("{0} {1} {2}",
-                                Common.Session.GetUserName(),
-                                Common.Constants.LogAction.Create, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
-                                Common.Constants.BusinessLogType.Create);
+                                    Utilities.ShowMessage(CommonMessage.EXISTED_PRODUCT_IN_CONTRACT);
+                                }
+                                else
+                                {
+                                    model = result;
+                                    gbRegisterSchedule.Visible = true;
+                                    productScheduleShow = new ProductScheduleShow()
+                                    {
+                                        ContractDetailId = model.Id,
+                                        TimeSlotLength = (int)cboDuration.SelectedValue,
+                                        ProductName = txtFileName.Text.Trim()
+                                    };
+                                    Utilities.ShowMessage(CommonMessage.ADD_SUCESSFULLY);
+                                    Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                    Common.Session.GetUserName(),
+                                    Common.Constants.LogAction.Create, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                                    Common.Constants.BusinessLogType.Create);
+                                }
                             }
+                        } else
+                        {
+                            //Has ACTIVE used before => Not Able to add
+                            Utilities.ShowMessage(CommonMessage.FILENAME_IS_USED);
                         }
                     }
                     else
                     {
-                        //Edit
-                        model.ProductName = txtProductName.Text;
-
-                        model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
-                        model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
-                        model.FileName = txtFileName.Text;
-                        model.ShowTypeId = (int)cboShowType.SelectedValue;
-                        model.DurationSecond = (int)cboDuration.SelectedValue;
-
-                        editResult = _contractDetailService.EditContractDetail(model);
-                        if (editResult == CRUDStatusCode.SUCCESS)
+                        if (_contractDetailService.AbleToEditWithFileName(txtFileName.Text.Trim(), model.Id)) //Not has ACTIVE used before => Able to add
                         {
-                            gbRegisterSchedule.Visible = true;
-                            Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
-                            Logging.LogBusiness(string.Format("{0} {1} {2}",
-                            Common.Session.GetUserName(),
-                            Common.Constants.LogAction.Update, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
-                            Common.Constants.BusinessLogType.Update);
+                            //---------Edit---------
+                            model.ProductName = txtProductName.Text.Trim();
+
+                            model.TotalCost = Utilities.GetDoubleFromTextBox(txtTotalCost);
+                            model.NumberOfShow = Utilities.GetIntFromTextBox(txtNumberOfShow);
+                            model.FileName = txtFileName.Text.Trim();
+                            model.ShowTypeId = (int)cboShowType.SelectedValue;
+                            model.DurationSecond = (int)cboDuration.SelectedValue;
+
+                            editResult = _contractDetailService.EditContractDetail(model);
+                            if (editResult == CRUDStatusCode.SUCCESS)
+                            {
+                                gbRegisterSchedule.Visible = true;
+                                Utilities.ShowMessage(CommonMessage.EDIT_SUCESSFULLY);
+                                Logging.LogBusiness(string.Format("{0} {1} {2}",
+                                Common.Session.GetUserName(),
+                                Common.Constants.LogAction.Update, "sản phẩm thuộc hợp đồng mã " + model.ContractCode),
+                                Common.Constants.BusinessLogType.Update);
+                            }
+                        }
+                        else
+                        {
+                            //Has ACTIVE used before => Not Able to add
+                            Utilities.ShowMessage(CommonMessage.FILENAME_IS_USED);
                         }
                     }
                 }

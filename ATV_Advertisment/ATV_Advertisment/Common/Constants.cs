@@ -38,6 +38,7 @@ namespace ATV_Advertisment.Common
 
             public static string USED_CODE = "Mã đã được sử dụng";
             public static string USED_CODE_LENGTH = "Thời điểm có (Mã, Thời lượng) này đã được tạo";
+            public static string FILENAME_IS_USED = "[Mô tả video] (FileName) đã được sử dụng";
 
             public static string EXISTED_PRODUCT_IN_CONTRACT = "Sản phẩm đã được tạo trong hợp đồng";
             public static string EXISTED_PRODUCT_SCHEDULE = "Sản phẩm đã được tạo lịch vào (Thời điểm phát, Ngày chiếu) này";

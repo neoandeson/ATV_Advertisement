@@ -21,6 +21,8 @@ namespace ATV_Advertisment.Services
         ContractItem CreateContractDetail(ContractItem input);
         int EditContractDetail(ContractItem input);
         ContractDetailUpdateVM UpdateContractDetailCost(int id);
+        bool AbleToAddWithFileName(string fileName);
+        bool AbleToEditWithFileName(string fileName, int id);
     }
 
     public class ContractItemService : IContractDetailService
@@ -151,7 +153,7 @@ namespace ATV_Advertisment.Services
         {
             return _contractItemRepository.Get(c => c.StatusId == CommonStatus.ACTIVE 
                                                     && c.ContractCode == contractCode 
-                                                    && c.FileName == fileName)
+                                                    && c.FileName.Trim() == fileName.Trim())
                                                     .FirstOrDefault();
         }
 
@@ -209,7 +211,7 @@ namespace ATV_Advertisment.Services
         {
             var options = new Dictionary<string, string>();
             options.Add("", "");
-            var contractItems = _contractItemRepository.Get(c => c.ContractCode == contractCode);
+            var contractItems = _contractItemRepository.Get(c => c.ContractCode == contractCode && c.StatusId == Constants.CommonStatus.ACTIVE);
             if (contractItems.Count() > 0)
             {
                 foreach (var ci in contractItems)
@@ -218,6 +220,53 @@ namespace ATV_Advertisment.Services
                 }
             }
             return options;
+        }
+
+        public bool AbleToAddWithFileName(string fileName)
+        {
+            bool result = true;
+
+            var contractItems = _contractItemRepository.Get(c => c.FileName == fileName && c.StatusId == Constants.CommonStatus.ACTIVE);
+            if (contractItems != null)
+            {
+                int quantity = contractItems.Count();
+                if(quantity > 0)
+                {
+                    result = false;
+                }
+            }
+
+            return result;
+        }
+
+        public bool AbleToEditWithFileName(string fileName, int id)
+        {
+            bool result = true;
+
+            var contractItems = _contractItemRepository.Get(c => c.FileName == fileName && c.StatusId == Constants.CommonStatus.ACTIVE);
+            if (contractItems != null)
+            {
+                int quantity = contractItems.Count();
+                if(quantity == 0)
+                {
+                    result = true;
+                }
+                else if(quantity == 1)
+                {
+                    var contractItem = contractItems.FirstOrDefault();
+                    if(contractItem.Id != id)
+                    {
+                        //Has another used this FileName
+                        result = false;
+                    }
+                } else
+                {
+                    //Has another used this FileName
+                    result = false;
+                }
+            }
+
+            return result;
         }
     }
 }
