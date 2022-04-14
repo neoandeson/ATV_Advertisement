@@ -379,5 +379,41 @@ namespace ATV_Advertisment.Common
             isLogout = isFunctionLogout;
             return form;
         }
+
+        public static void ChangeConnectionString(string dbName)
+        {
+            string DBConn = "data source={0};initial catalog={1};user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework";
+            DBConn = string.Format(DBConn, @"QUANGCAO01\SQLEXPRESSATV2", dbName, "sa", "Huyphong@123");
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
+            ConnectionStringsSection connSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
+            connSection.ConnectionStrings["ATVEntities"].ConnectionString = DBConn;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("AppSettings");
+        }
+
+        public static void ChangeConnectionString(string enties, string dbName)
+        {
+            string dbConn = "data source={0};initial catalog={1};user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework";
+            dbConn = string.Format(dbConn, @"QUANGCAO01\SQLEXPRESSATV2", dbName, "sa", "Huyphong@123");
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            config.ConnectionStrings.ConnectionStrings[enties].ConnectionString = dbConn;
+            config.ConnectionStrings.ConnectionStrings[enties].ProviderName = "System.Data.SqlClient";
+            config.Save(ConfigurationSaveMode.Modified);
+            config = null;
+        }
+
+        public static string GetConnectionStringVersion()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["ATVEntities"].ConnectionString;
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionString);
+
+            string database = builder.InitialCatalog;
+
+            return database;
+        }
     }
 }

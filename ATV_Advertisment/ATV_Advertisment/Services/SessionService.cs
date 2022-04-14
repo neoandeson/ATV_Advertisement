@@ -115,5 +115,15 @@ namespace ATV_Advertisment.Services
         {
             return _SessionRepository.Exist(c => c.Code == code && c.StatusId != CommonStatus.DELETE);
         }
+
+        public void ChangeConnectionString(string dbName)
+        {
+            _SessionRepository.ChangeConnectionString(dbName);
+        }
+
+        public void ChangeConnectionString(string entites, string dbName)
+        {
+            _SessionRepository.ChangeConnectionString(entites, dbName);
+        }
     }
 }
